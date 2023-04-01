@@ -93,9 +93,7 @@ class PromptGenerator(Resource):
             logging.warning("Blacklist file missing: %s", blacklist_filename)
             return blacklist
         with open(blacklist_filename, 'r') as f:
-            for line in f:
-                blacklist.append(line)
-
+            blacklist.extend(iter(f))
             return blacklist
 
     def post(self):
